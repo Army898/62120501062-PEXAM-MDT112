@@ -13,6 +13,11 @@ void setup()
         myservo.write(pos); 
         delay(15);
     }
+    for(pos = 180; pos>=1; pos -=1) 
+    {
+        myservo.write(pos);
+        delay(15);
+    }
       Serial.println("Servo : " + String(pos) + " degrees");
       delay(900);
 }
