@@ -23,12 +23,12 @@ void setup()
         myservo.write(pos); 
         delay(15);
     }
-    for(pos = 180; pos>=1; pos -=1) 
+    for(pos = 180; pos >=0; pos -=1) 
     {
         myservo.write(pos);
         delay(15);
     }
-    Serial.println("Servo : " + String(pos) + " degrees");   
+    Serial.println("Servo : " + String(pos) + " degrees");
     delay(900);
     oled.clearDisplay();      
     oled.setCursor(36, 0);        
@@ -45,11 +45,17 @@ int count = 0;
 void loop()
 {
     bool currentState = digitalRead(2);
+    
+        if(lastState > currentState)                
+        {
+            count++;                                 
+        }
+        if(lastState < currentState)                 
+        {
+            pos = count*10;
+            myservo.write(pos); 
+        }
+        lastState = currentState;
 
-    if(lastState > currentState)                
-    {
-        count++;
-        myservo.write(pos + (count*10));                                 
-    }
-    lastState = currentState;
+    
 }
