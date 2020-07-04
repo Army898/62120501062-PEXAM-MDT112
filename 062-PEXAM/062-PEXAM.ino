@@ -25,7 +25,7 @@ void setup()
         myservo.write(pos);
         delay(15);
     }
-    Serial.println("Servo : " + String(pos) + " degrees");   //ทำให้จอ OLED แสดงข้อความ Intro ในบรรทัดแรกว่า “Hello MDT” ที่กึ่งกลางหน้าจอ OLED หน่วงเวลา 1000ms และ Clear หน้าจอ 1 ครั้ง (ทำงานเพียงครั้งเดียว)
+    Serial.println("Servo : " + String(pos) + " degrees");   
     delay(900);
     oled.clearDisplay();      
     oled.setCursor(36, 0);        
@@ -34,7 +34,7 @@ void setup()
     oled.println("Hello MDT");
     oled.display();
     delay(1000);
-
+    oled.clearDisplay();
 }
 void loop(){
 
